@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.simplegame.core" />
+	
+	<bean id="dataContainer" class="com.simplegame.core.container.DataContainer" />
+
+	<bean id="ioExecutor"
+		class="com.simplegame.deploy.executor.impl.TimeoutBusinessExecutor">
+		<property name="name" value="IO" />
+		<property name="config">
+			<map>
+				<entry key="IO_ALL" value="1" />
+				<entry key="IO_BUS" value="1" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="busRuleChecker" class="com.simplegame.deploy.share.checker.EmptyChecker" />
+	<bean id="busExecutor"
+		class="com.simplegame.deploy.executor.impl.BalanceBusinessExecutor">
+		<property name="ruleChecker" ref="busRuleChecker" />
+
+		<property name="name" value="BUS" />
+		<property name="config">
+			<map>
+				<entry key="bus_init" value="3"></entry>
+				<entry key="bus_cache" value="6"></entry>
+				<entry key="system" value="1"></entry>
+			</map>
+		</property>
+	</bean>
+
+
+</beans>

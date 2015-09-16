@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status=debug 可以查看log4j的装配过程 -->
+<configuration status="info" monitorInterval="1800">
+	<properties>
+		<property name="LOG_HOME">logs/</property>
+	</properties>
+
+	<appenders>
+		<Console name="console_appender" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%-5level]-[%thread] [%file:%line] %m%n" />
+		</Console>
+
+		<!-- 错误日志 -->
+		<RollingFile name="stdout_appender" fileName="${LOG_HOME}/stdout.log" filePattern="${LOG_HOME}/stdout-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%-5level]-[%thread] [%file:%line] %m%n" />
+			<SizeBasedTriggeringPolicy size="100 MB" />
+		</RollingFile>
+
+
+		<!-- 错误日志 -->
+		<RollingFile name="error_appender" fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/error-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="%-d{yyyy-MM-dd HH:mm:ss} [%-5level]-[%thread] [%file:%line] %m%n" />
+			<SizeBasedTriggeringPolicy size="100 MB" />
+		</RollingFile>
+
+
+	</appenders>
+
+	<loggers>
+		<logger name="org.springframework.core" level="info" />
+		<logger name="org.springframework.beans" level="info" />
+		<logger name="org.springframework.context" level="info" />
+	   
+		<logger name="error_logger" level="error" additivity="true">
+			<AppenderRef ref="error_appender" />
+		</logger>		
+		<logger name="stdout_logger" level="info" additivity="true">
+			<AppenderRef ref="stdout_appender" />
+		</logger>		
+
+
+		<root level="info">
+			<AppenderRef level="info" ref="console_appender" />
+			<AppenderRef level="info" ref="stdout_appender" />
+			<AppenderRef level="error" ref="error_appender" />
+		</root>
+	</loggers>
+
+</configuration>
