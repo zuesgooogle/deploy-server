@@ -20,4 +20,15 @@ public class IndexController {
         return "index";
     }
     
+    @RequestMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+    
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
+    
+    
 }
