@@ -9,8 +9,8 @@
 	
 	<bean id="dataContainer" class="com.simplegame.core.container.DataContainer" />
 
-	<bean id="ioExecutor"
-		class="com.simplegame.deploy.executor.impl.TimeoutBusinessExecutor">
+
+	<bean id="ioExecutor" class="com.simplegame.deploy.executor.impl.TimeoutBusinessExecutor">
 		<property name="name" value="IO" />
 		<property name="config">
 			<map>
@@ -21,8 +21,7 @@
 	</bean>
 
 	<bean id="busRuleChecker" class="com.simplegame.deploy.share.checker.EmptyChecker" />
-	<bean id="busExecutor"
-		class="com.simplegame.deploy.executor.impl.BalanceBusinessExecutor">
+	<bean id="busExecutor" class="com.simplegame.deploy.executor.impl.BalanceBusinessExecutor">
 		<property name="ruleChecker" ref="busRuleChecker" />
 
 		<property name="name" value="BUS" />

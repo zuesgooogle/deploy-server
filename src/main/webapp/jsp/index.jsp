@@ -24,12 +24,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">简单游戏</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">简单游戏</a></li>
-            <li><a href="#">首页</a></li>
+            <li class="active"><a href="#">首页</a></li>
             <li><a href="#">游戏</a></li>
             <li><a href="#">充值</a></li>
             <li><a href="#">联系我们</a></li>
